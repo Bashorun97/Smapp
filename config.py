@@ -12,11 +12,11 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.getenv('DEV_URI') or 'sqlite:///' + os.path.join(base_dir, 'smapp_dev')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DEV_URI') or 'sqlite:///' + os.path.join(base_dir, 'smapp_dev.sqlite')
 
 class TestsConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.getenv('TESTS_URI') or 'sqlite:///' + os.path.join(base_dir, 'smapp_test')
+    SQLALCHEMY_DATABASE_URI = os.getenv('TESTS_URI') or 'sqlite:///' + os.path.join(base_dir, 'smapp_test.sqlite')
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI')

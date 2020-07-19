@@ -1,6 +1,6 @@
 from flask import Flask
-from . import main
+from . import student_reg
 
-@main.route('/index')
+@student_reg.route('/index')
 def index():
     return 'hello world'

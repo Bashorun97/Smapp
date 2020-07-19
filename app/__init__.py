@@ -22,7 +22,10 @@ def create_app(config_type):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
     
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint, url_prefix='/main')
+    from .student_reg import student_reg as student_reg_blueprint
+    app.register_blueprint(student_reg_blueprint, url_prefix='/student-reg')
 
+    from .course_reg import course_reg as course_reg_blueprint
+    app.register_blueprint(course_reg_blueprint, url_prefix='/course-reg')
+    
     return app

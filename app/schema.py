@@ -1,5 +1,5 @@
 # Schema declarations
-from app.models import Student, SystemsEng, Fisheries
+from app.models import Student, Course, Department
 from app.extensions import ma
 
 class StudentSchema(ma.Schema):
@@ -14,24 +14,20 @@ class StudentSchema(ma.Schema):
 student_schema = StudentSchema()
 students_schema = StudentSchema(many=True)
 
-
-class SystemsEngSchema(ma.Schema):
+class CourseSchema(ma.Schema):
     class Meta:
         fields = (
-            'course_1', 'course_2', 'course_3', 'course_4', 'course_5',
-            'course_6', 'course_7', 'course_8', 'course_9'
+            'id', 'course_name', 'status', 'unit'
         )
-    
-systems_eng_schema = SystemsEngSchema()
-systems_engs_schema = SystemsEngSchema(many=True)
 
+course_schema = CourseSchema()
+courses_schema = CourseSchema(many=True)
 
-class FisheriesSchema(ma.Schema):
+class DepartmentSchema(ma.Schema):
     class Meta:
         fields = (
-            'course_1', 'course_2', 'course_3', 'course_4', 'course_5',
-            'course_6', 'course_7', 'course_8', 'course_9'
+            'id', 'department_name', 'course_id'
         )
-    
-fisheries_schema = FisheriesSchema()
-fisheriess_schema = FisheriesSchema(many=True)
+
+department_schema = DepartmentSchema()
+departments_schema = DepartmentSchema(many=True)
