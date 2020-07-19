@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-#from .extensions import db, ma, cors
+from .extensions import db, ma, cors
 from config import config
 
 
@@ -11,12 +11,12 @@ def create_app(config_type):
     config[config_type].init_app(app)
     app.config['SECRET_KEY'] = os.urandom(24)
 
-    '''
+    
     # Extension initialization
     db.init_app(app)
     ma.init_app(app)
     cors.init_app(app)
-    '''
+    
 
     # Blueprint Registration
     from .auth import auth as auth_blueprint
