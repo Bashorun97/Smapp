@@ -1,4 +1,3 @@
 venv
-migrations
 smapp_dev.sqlite
 __pycache__

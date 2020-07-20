@@ -18,7 +18,7 @@ def create_app(config_type):
     bcrypt.init_app(app)
     
 
-    # Blueprint Registration
+    # Blueprint or Module Registration
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/')
     
