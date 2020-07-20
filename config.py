@@ -19,7 +19,7 @@ class TestsConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv('TESTS_URI') or 'sqlite:///' + os.path.join(base_dir, 'smapp_test.sqlite')
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 
 config = {
@@ -27,5 +27,5 @@ config = {
     'testing': TestsConfig,
     'production': ProductionConfig,
 
-    'default': DevelopmentConfig
+    'default': ProductionConfig
 }
