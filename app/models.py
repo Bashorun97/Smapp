@@ -1,8 +1,10 @@
-from app import db, ma
+from app import db
+import datetime as d
 
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.String(12))
     name = db.Column(db.String(30))
     surname = db.Column(db.String(30))
     email = db.Column(db.String(50), unique=True)
@@ -14,12 +16,17 @@ class Student(db.Model):
     department = db.Column(db.String(100))
     course = db.Column(db.String(100))
     level = db.Column(db.Integer)
+    last_login = db.Column(db.DateTime())
     courses_offered = db.Column(db.String(300))
     nationality = db.Column(db.String(20))
     next_of_kin = db.Column(db.String(30))
     next_of_kin_phone = db.Column(db.Integer)
     next_of_kin_address = db.Column(db.String(100))
     dept_id = db.Column(db.Integer, db.ForeignKey('department.id'))
+
+
+    def compute_last_login(self):
+        self.last_login = d.datetime.utcnow()
 
 
 # Model declaration for Courses per student

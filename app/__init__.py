@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-from .extensions import db, ma, cors
+from .extensions import db, ma, bcrypt
 from config import config
 
 
@@ -15,7 +15,7 @@ def create_app(config_type):
     # Extension initialization
     db.init_app(app)
     ma.init_app(app)
-    cors.init_app(app)
+    bcrypt.init_app(app)
     
 
     # Blueprint Registration

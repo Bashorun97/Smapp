@@ -1,4 +1,4 @@
 venv
 migrations
-smapp_dev
+smapp_dev.sqlite
 __pycache__
