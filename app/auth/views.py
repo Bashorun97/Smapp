@@ -70,7 +70,7 @@ def login():
     
     student = Student.query.filter_by(student_id=auth.username).first()
     if student:
-        if pbkdf2_sha256.verify(auth.password, student.password)
+        if pbkdf2_sha256.verify(auth.password, student.password):
         #if bcrypt.check_password_hash(student.password, auth.password):
             token = jwt.encode({
                     'id':student.student_id,
