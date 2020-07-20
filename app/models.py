@@ -8,7 +8,7 @@ class Student(db.Model):
     name = db.Column(db.String(30))
     surname = db.Column(db.String(30))
     email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(256))
     home_address = db.Column(db.String(100))
     telephone = db.Column(db.String(20), unique=True)
     age = db.Column(db.Integer)
