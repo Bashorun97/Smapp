@@ -11,6 +11,7 @@ from app import db, ma, bcrypt
 from uuid import UUID, uuid4
 import datetime as d
 import jwt, json
+from passlib.hash import pbkdf2_sha256
 from functools import wraps
 
 
@@ -34,7 +35,8 @@ def login_required(f):
 @auth.route('/createaccount', methods=['POST'])
 def create_account():
     data = request.get_json(force=True)
-    p_hash = bcrypt.generate_password_hash(data["password"])
+    p_hash = pbkdf2_sha256.hash(data["password"])
+    #p_hash = bcrypt.generate_password_hash(data["password"])
     new_student = Student(name=data['name'], surname=data['surname'], password=p_hash, student_id=str(uuid4()))
     db.session.add(new_student)
 
@@ -68,7 +70,8 @@ def login():
     
     student = Student.query.filter_by(student_id=auth.username).first()
     if student:
-        if bcrypt.check_password_hash(student.password, auth.password):
+        if pbkdf2_sha256.verify(auth.password, student.password)
+        #if bcrypt.check_password_hash(student.password, auth.password):
             token = jwt.encode({
                     'id':student.student_id,
                     'exp':d.datetime.utcnow() + d.timedelta(minutes=30)},
