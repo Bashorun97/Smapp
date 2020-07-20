@@ -9,7 +9,7 @@ from app.schema import (student_schema, students_schema,
 from flask_migrate import Migrate
 
 
-app = create_app(os.getenv('default') or 'default')
+app = create_app(os.getenv('default') or 'production')
 migrate = Migrate(app, db)
 
 
