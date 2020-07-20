@@ -4,11 +4,11 @@ import datetime as d
 
 class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.String(12))
+    student_id = db.Column(db.String(50))
     name = db.Column(db.String(30))
     surname = db.Column(db.String(30))
     email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(50))
+    password = db.Column(db.String(80))
     home_address = db.Column(db.String(100))
     telephone = db.Column(db.String(20), unique=True)
     age = db.Column(db.Integer)
