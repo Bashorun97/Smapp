@@ -17,7 +17,7 @@ students_schema = StudentSchema(many=True)
 class CourseSchema(ma.Schema):
     class Meta:
         fields = (
-            'id', 'course_name', 'status', 'unit'
+            'id', 'course_name', 'status', 'unit', 'level'
         )
 
 course_schema = CourseSchema()

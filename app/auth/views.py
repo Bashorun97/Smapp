@@ -1,5 +1,5 @@
 from . import auth
-from flask import Flask, request, jsonify, make_response, current_app
+from flask import Flask, request, jsonify, make_response, current_app, render_template
 from app.models import Student, Course, Department 
 from app.schema import (
     student_schema, students_schema, course_schema,
@@ -82,8 +82,7 @@ def login():
         return make_response({'error':'No such student found'}, 401)
 
 
-@auth.route('/index')
-@login_required
-def index(current_student):
-    return make_response({'msg':'Welcome to Smapp Portal. I\'m protected'}, 200)
+@auth.route('/')
+def index():
+    return make_response(render_template('auth/home.html'), 200)
 
