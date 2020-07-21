@@ -9,7 +9,6 @@ def create_app(config_type):
     app = Flask(__name__)
     app.config.from_object(config[config_type])
     config[config_type].init_app(app)
-    app.config['SECRET_KEY'] = os.urandom(24)
 
     
     # Extension initialization

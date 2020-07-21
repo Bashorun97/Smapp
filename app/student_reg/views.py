@@ -43,9 +43,7 @@ def register(current_student, student_id):
         student.next_of_kin_address = data['next_of_kin_address']
         
         dep = Department.query.filter_by(department_name=student.course).first()
-        print(dep)
         student.dep = Department.query.filter_by(department_name=data['course']).first()
-        print(student.dep)
         db.session.add(student)
         db.session.commit()
     return make_response(jsonify({'msg':'Successfully Registered!'}), 200)
