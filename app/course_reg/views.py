@@ -39,10 +39,9 @@ def courses(current_student):
     return make_response(jsonify(course_object), 200)
 
 
-@course_reg.route('/course-register', methods=['PUT'])                                                                                                
+@course_reg.route('/course-register', methods=['POST'])                                                                                                
 @login_required
 def register_course(current_student):
-    data = request.get_json()
     if current_student is None:
         return make_response(jsonify({'msg':f'No such Student exists!'}))
     else:
